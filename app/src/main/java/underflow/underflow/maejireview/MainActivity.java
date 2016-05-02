@@ -1,10 +1,10 @@
 package underflow.underflow.maejireview;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.fab:
-                Toast.makeText(MainActivity.this, "test", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, ReviewActivity.class));
                 break;
         }
     }
