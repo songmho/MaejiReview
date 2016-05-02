@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 
-
 public class IntroActivity extends AppCompatActivity {
     int delay_time = 2000;
     @Override
