@@ -22,7 +22,6 @@ public class List_Adapter extends RecyclerView.Adapter {
     public List_Adapter(Context context, ArrayList<ListItem> items) {
         this.context = context;
         this.items = items;
-        Log.d("dddddd",""+items.size());
     }
 
     @Override
@@ -35,7 +34,6 @@ public class List_Adapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ListItem item = items.get(position);
-        Log.d("dddd",""+items.size());
         ((Body)holder).textView.setText(item.getText());
         ((Body)holder).cardView.setOnClickListener(new View.OnClickListener() {
             @Override
