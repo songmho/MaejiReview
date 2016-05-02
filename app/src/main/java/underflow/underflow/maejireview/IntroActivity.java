@@ -18,15 +18,15 @@ public class IntroActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activiy_intro);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-              startActivity(new Intent(IntroActivity.this,MainActivity.class));
-            finish();
-            }
-        },delay_time);
+        Handler hd = new Handler();
+        hd.postDelayed(new splashhandler(), delay_time);
     }
 
+    private class splashhandler implements Runnable {
+        public void run() {
+            startActivity(new Intent(getApplication(),MainActivity.class));
+            IntroActivity.this.finish();
+        }
+    }
 
 }
