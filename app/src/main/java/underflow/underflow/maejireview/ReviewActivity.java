@@ -6,6 +6,7 @@ package underflow.underflow.maejireview;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,9 +19,14 @@ public class ReviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
-        ImageView image = new ImageView(this);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        ImageView image = (ImageView) findViewById(R.id.image);
         image.setImageResource(R.drawable.logo_p);
-        TextView text = new TextView(this);
+        TextView text = (TextView) findViewById(R.id.text);
     }
 
 

@@ -1,6 +1,5 @@
 package underflow.underflow.maejireview;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 
-public class IntroActivity extends Activity {
+public class IntroActivity extends AppCompatActivity {
     int delay_time = 2000;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
