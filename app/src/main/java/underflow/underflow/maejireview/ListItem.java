@@ -4,12 +4,18 @@ package underflow.underflow.maejireview;
  * Created by songmho on 2016-05-02.
  */
 public class ListItem {
-    String text;
+    String title;
+    String user;
 
-    public String getText() {
-        return text;
+    public String getUser() {
+        return user;
     }
-    public ListItem(String text){
-        this.text=text;
+
+    public String getTitle() {
+        return title;
+    }
+    public ListItem(String title, String user){
+        this.title=title;
+        this.user=user;
     }
 }

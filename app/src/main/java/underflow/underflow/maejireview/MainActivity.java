@@ -19,16 +19,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {          //MainActivity
 
-    @Bind(R.id.fab) FloatingActionButton fab;
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.drawerLayout) DrawerLayout drawerlayout;
-    @Bind(R.id.navigationView) NavigationView navigationView;
-    @Bind(R.id.recyclerView) RecyclerView recyclerView;
+    @BindView(R.id.fab) FloatingActionButton fab;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.drawerLayout) DrawerLayout drawerlayout;
+    @BindView(R.id.navigationView) NavigationView navigationView;
+    @BindView(R.id.recyclerView) RecyclerView recyclerView;
 
     FragmentTransaction fragmentTransaction;
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ArrayList<ListItem> items=new ArrayList<>();                //List Item 생성
         for(int i=0;i<5;i++){
-            ListItem item = new ListItem("# "+i);
+            ListItem item = new ListItem("Title","글쓴이 : "+"user"+i);
             items.add(item);
         }
 
@@ -72,8 +72,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean changeDrawerMenu(MenuItem item) {       //drawer의 항목을 눌렀을 경우
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
         switch (item.getItemId()){
-            case R.id.setup:
+            case R.id.category_rice:            //밥 클릭 시
+                Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
+                drawerlayout.closeDrawer(GravityCompat.START);
+                return true;
+
+            case R.id.category_home:            //집 클릭 시
+                Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
+                drawerlayout.closeDrawer(GravityCompat.START);
+                return true;
+
+            case R.id.setup:                    //설정 클릭 시
+                Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
+                drawerlayout.closeDrawer(GravityCompat.START);
+                return true;
+
+            case R.id.about:                    //about 클릭 시
                 Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
                 drawerlayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -86,8 +102,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.fab:      //Floating Action Button을 눌렀을 경우
-                Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
-               // startActivity(new Intent(MainActivity.this, ReviewActivity.class));
+                //Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, WriteActivity.class));
                 break;
         }   //end switch
     }       //end Onclick method

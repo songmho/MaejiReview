@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group
+        android:id="@+id/group_category"
+        android:checkableBehavior="single">
+    <item
+            android:id="@+id/category"
+            android:title="분류" >
+        <menu>
+            <item
+                android:id="@+id/category_rice"
+                android:icon="@drawable/ic_restaurant"
+                android:title="밥" />
+            <item
+                android:id="@+id/category_home"
+                android:icon="@drawable/ic_home"
+                android:title="집" />
+        </menu>
+
+    </item>
+    </group>
+
+    <group
         android:id="@+id/group_setup"
         android:checkableBehavior="single">
 
         <item
             android:id="@+id/setup"
-            android:title="setting" />
+            android:icon="@drawable/ic_setting"
+            android:title="설정" />
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/ic_supervisor"
+            android:title="about" />
     </group>
 </menu>

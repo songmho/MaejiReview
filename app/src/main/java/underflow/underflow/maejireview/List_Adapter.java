@@ -33,13 +33,16 @@ public class List_Adapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ListItem item = items.get(position);
-        ((Body)holder).textView.setText(item.getText());
+        final ListItem item = items.get(position);
+        ((Body)holder).title.setText(item.getTitle());
+        ((Body)holder).user.setText(item.getUser());
         ((Body)holder).cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(context,ReviewActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.putExtra("title",item.getTitle());
+                i.putExtra("user",item.getUser());
                 context.startActivity(i);
             }
         });
@@ -52,11 +55,13 @@ public class List_Adapter extends RecyclerView.Adapter {
 
     public class Body extends RecyclerView.ViewHolder {
         CardView cardView;
-        TextView textView;
+        TextView title;
+        TextView user;
         public Body(View itemView) {
             super(itemView);
             cardView = (CardView)itemView.findViewById(R.id.card);
-            textView = (TextView)itemView.findViewById(R.id.text);
+            title = (TextView)itemView.findViewById(R.id.title);
+            user = (TextView)itemView.findViewById(R.id.user);
         }
     }
 
