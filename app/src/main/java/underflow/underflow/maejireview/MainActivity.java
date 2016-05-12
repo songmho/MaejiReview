@@ -50,10 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         ArrayList<ListItem> items=new ArrayList<>();                //List Item 생성
-        for(int i=0;i<5;i++){
-            ListItem item = new ListItem("Title","글쓴이 : "+"user"+i);
-            items.add(item);
-        }
+
+        items.add(new ListItem(R.drawable.test1,"Title","글쓴이 : "+"user"+1));
+        items.add(new ListItem(R.drawable.test2,"Title","글쓴이 : "+"user"+2));
+        items.add(new ListItem(R.drawable.test3,"Title","글쓴이 : "+"user"+3));
+        items.add(new ListItem(R.drawable.test4,"Title","글쓴이 : "+"user"+4));
+        items.add(new ListItem(R.drawable.test5,"Title","글쓴이 : "+"user"+5));
 
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

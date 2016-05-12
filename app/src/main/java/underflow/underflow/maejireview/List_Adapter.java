@@ -9,7 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -34,6 +37,8 @@ public class List_Adapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ListItem item = items.get(position);
+        Glide.with(context).load(item.getBackground()).into(((Body)holder).background);
+      //  ((Body)holder).background.setBackground(R.drawable.test);
         ((Body)holder).title.setText(item.getTitle());
         ((Body)holder).user.setText(item.getUser());
         ((Body)holder).cardView.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +62,10 @@ public class List_Adapter extends RecyclerView.Adapter {
         CardView cardView;
         TextView title;
         TextView user;
+        ImageView background;
         public Body(View itemView) {
             super(itemView);
+            background = (ImageView) itemView.findViewById(R.id.background);
             cardView = (CardView)itemView.findViewById(R.id.card);
             title = (TextView)itemView.findViewById(R.id.title);
             user = (TextView)itemView.findViewById(R.id.user);

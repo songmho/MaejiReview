@@ -32,6 +32,9 @@ public class Img_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_img,container,false);
         ButterKnife.bind(this,view);
 
+        Bundle bundle=getArguments();
+
+        img.setImageResource(bundle.getInt("img"));
 
         return view;
     }

@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,6 +31,8 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.user) TextView user;
     @BindView(R.id.container) LinearLayout container;
+
+    int[] img_arr= new int[5];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,12 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         getSupportActionBar().setTitle(intent.getStringExtra("title"));
 
         user.setText(intent.getStringExtra("user"));
+
+        img_arr[0]=R.drawable.test1;
+        img_arr[1]=R.drawable.test2;
+        img_arr[2]=R.drawable.test3;
+        img_arr[3]=R.drawable.test4;
+        img_arr[4]=R.drawable.test5;
 
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -86,7 +96,11 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
 
         @Override
         public Fragment getItem(int position) {
-            return new Img_Fragment();
+            Img_Fragment imgFragment = new Img_Fragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("img",img_arr[position]);
+            imgFragment.setArguments(bundle);
+            return imgFragment;
         }
 
         @Override
