@@ -19,16 +19,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {          //MainActivity
 
-    @BindView(R.id.fab) FloatingActionButton fab;
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.drawerLayout) DrawerLayout drawerlayout;
-    @BindView(R.id.navigationView) NavigationView navigationView;
-    @BindView(R.id.recyclerView) RecyclerView recyclerView;
+    @Bind(R.id.fab) FloatingActionButton fab;
+    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.drawerLayout) DrawerLayout drawerlayout;
+    @Bind(R.id.navigationView) NavigationView navigationView;
+    @Bind(R.id.recyclerView) RecyclerView recyclerView;
 
     FragmentTransaction fragmentTransaction;
 

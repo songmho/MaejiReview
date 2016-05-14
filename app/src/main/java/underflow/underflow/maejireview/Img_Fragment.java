@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
  */
 public class Img_Fragment extends Fragment {
 
-    @BindView(R.id.img) ImageView img;
+    @Bind(R.id.img) ImageView img;
     Context mContext;
 
     @Override

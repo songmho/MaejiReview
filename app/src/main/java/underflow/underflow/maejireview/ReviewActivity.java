@@ -19,18 +19,18 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ReviewActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.viewPager) ViewPager viewPager;
-    @BindView(R.id.review) TextView reView;
-    @BindView(R.id.recommend) Button recommend;
-    @BindView(R.id.un_recommend) Button un_recommend;
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.user) TextView user;
-    @BindView(R.id.container) LinearLayout container;
+    @Bind(R.id.viewPager) ViewPager viewPager;
+    @Bind(R.id.review) TextView reView;
+    @Bind(R.id.recommend) Button recommend;
+    @Bind(R.id.un_recommend) Button un_recommend;
+    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.user) TextView user;
+    @Bind(R.id.container) LinearLayout container;
 
     int[] img_arr= new int[5];
 
