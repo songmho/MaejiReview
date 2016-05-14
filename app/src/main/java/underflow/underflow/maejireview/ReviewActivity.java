@@ -98,6 +98,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         public Fragment getItem(int position) {
             Img_Fragment imgFragment = new Img_Fragment();
             Bundle bundle = new Bundle();
+            bundle.putString("activity","review");
             bundle.putInt("img",img_arr[position]);
             imgFragment.setArguments(bundle);
             return imgFragment;
