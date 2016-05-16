@@ -1,10 +1,7 @@
 package underflow.underflow.maejireview;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,10 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 /**
@@ -26,10 +19,10 @@ import java.util.List;
 public class Recycler_Adapter extends RecyclerView.Adapter {
 
     Context context;
-    List<Recycler_item> items;
+    List<Review_item> items;
     int item_layout;
 
-    public Recycler_Adapter(Context context, List<Recycler_item> items, int item_layout){
+    public Recycler_Adapter(Context context, List<Review_item> items, int item_layout){
         this.context=context;
         this.items=items;
         this.item_layout=item_layout;
@@ -37,22 +30,17 @@ public class Recycler_Adapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()) .inflate(R.layout.item_cardview, null);
+        View v = LayoutInflater.from(parent.getContext()) .inflate(R.layout.item_review, null);
         return new Body(v);
     }
 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        final Recycler_item item = items.get(position);
+        final Review_item item = items.get(position);
         Drawable drawable = context.getResources().getDrawable(item.getImage());
         ((Body) holder).title.setText(item.getTitle());
-        ((Body)holder).cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, item.getTitle(),Toast.LENGTH_SHORT).show();
-            }
-        });
+        ((Body) holder).user.setText(item.getUser());
     }
 
     @Override
@@ -63,14 +51,13 @@ public class Recycler_Adapter extends RecyclerView.Adapter {
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
         TextView title;
-        CardView cardView;
+        TextView user;
 
-        public RecyclerView.ViewHolder(View itemView){
+        public ViewHolder(View itemView){
             super(itemView);
             image=(ImageView)itemView.findViewById(R.id.image);
             title=(TextView)itemView.findViewById(R.id.title);
-            cardView=(CardView)itemView.findViewById(R.id.cardview);
-
+            user=(TextView)itemView.findViewById(R.id.user);
         }
     }
 

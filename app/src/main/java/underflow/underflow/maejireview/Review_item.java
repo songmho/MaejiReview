@@ -3,9 +3,10 @@ package underflow.underflow.maejireview;
 /**
  * Created by 수진 on 2016-05-16.
  */
-public class Recycler_item {
+public class Review_item {
     int image;
     String title;
+    String user;
 
     int getImage(){
         return this.image;
@@ -13,9 +14,13 @@ public class Recycler_item {
     String getTitle(){
         return this.title;
     }
+    String getUser(){
+        return this.user;
+    }
 
-    Recycler_item(int image, String title){
+    Review_item(int image, String title, String user){
         this.image=image;
         this.title=title;
+        this.user=user;
     }
 }

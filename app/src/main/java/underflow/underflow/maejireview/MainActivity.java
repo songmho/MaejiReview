@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {          //MainActivity
@@ -81,15 +80,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean changeDrawerMenu(MenuItem item) {       //drawer의 항목을 눌렀을 경우
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
+        Intent intent;
         switch (item.getItemId()){
             case R.id.category_rice:            //밥 클릭 시
-                Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
+                intent=new Intent(MainActivity.this,ListActivity.class);
+                intent.putExtra("category","rice");
+                startActivity(intent);
                 drawerlayout.closeDrawer(GravityCompat.START);
                 return true;
 
             case R.id.category_home:            //집 클릭 시
-                Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
+                intent=new Intent(MainActivity.this,ListActivity.class);
+                intent.putExtra("category", "home");
+                startActivity(intent);
                 drawerlayout.closeDrawer(GravityCompat.START);
                 return true;
 
