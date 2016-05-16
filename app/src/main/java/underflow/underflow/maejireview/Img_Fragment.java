@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
  */
 public class Img_Fragment extends Fragment {
 
-    @Bind(R.id.img) ImageView img;
     Context mContext;
 
     @Override
@@ -33,7 +32,7 @@ public class Img_Fragment extends Fragment {
         ButterKnife.bind(this,view);
 
         Bundle bundle=getArguments();
-
+        ImageView img = (ImageView)getActivity().findViewById(R.id.img);
         img.setImageResource(bundle.getInt("img"));
 
         return view;

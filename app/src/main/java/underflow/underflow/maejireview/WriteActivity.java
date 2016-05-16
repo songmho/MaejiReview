@@ -24,10 +24,10 @@ import butterknife.ButterKnife;
  */
 public class WriteActivity extends AppCompatActivity {
 
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.viewPager) ViewPager viewPager;
-    @Bind(R.id.edit_title) EditText edit_title;
-    @Bind(R.id.edit_content) EditText edit_content;
+    Toolbar toolbar;
+    ViewPager viewPager;
+    EditText edit_title;
+    EditText edit_content;
 
     int[] img_arr= new int[5];
 
@@ -40,6 +40,11 @@ public class WriteActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("리뷰작성");
+
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        viewPager = (ViewPager)findViewById(R.id.viewPager);
+        edit_title = (EditText)findViewById(R.id.edit_title);
+        edit_content = (EditText)findViewById(R.id.edit_content);
 
         img_arr[0]=R.drawable.test1;
         img_arr[1]=R.drawable.test2;

@@ -24,13 +24,13 @@ import butterknife.ButterKnife;
 
 public class ReviewActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @Bind(R.id.viewPager) ViewPager viewPager;
-    @Bind(R.id.review) TextView reView;
-    @Bind(R.id.recommend) Button recommend;
-    @Bind(R.id.un_recommend) Button un_recommend;
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.user) TextView user;
-    @Bind(R.id.container) LinearLayout container;
+    ViewPager viewPager;
+    TextView reView;
+    Button recommend;
+    Button un_recommend;
+    Toolbar toolbar;
+    TextView user;
+    LinearLayout container;
 
     int[] img_arr= new int[5];
 
@@ -41,6 +41,14 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         ButterKnife.bind(this);
 
         Intent intent=getIntent();
+
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        reView = (TextView)findViewById(R.id.review);
+        recommend = (Button) findViewById(R.id.recommend);
+        un_recommend = (Button)findViewById(R.id.un_recommend);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        user = (TextView)findViewById(R.id.user);
+        container = (LinearLayout)findViewById(R.id.container);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

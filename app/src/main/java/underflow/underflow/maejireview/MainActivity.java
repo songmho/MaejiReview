@@ -24,19 +24,26 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {          //MainActivity
 
-    @Bind(R.id.fab) FloatingActionButton fab;
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.drawerLayout) DrawerLayout drawerlayout;
-    @Bind(R.id.navigationView) NavigationView navigationView;
-    @Bind(R.id.recyclerView) RecyclerView recyclerView;
-
     FragmentTransaction fragmentTransaction;
+
+    FloatingActionButton fab;
+    Toolbar toolbar;
+    DrawerLayout drawerlayout;
+    NavigationView navigationView;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);                 //ButterKnife 사용
+
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        drawerlayout = (DrawerLayout)findViewById(R.id.drawerLayout);
+        navigationView = (NavigationView)findViewById(R.id.navigationView);
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+
 
         setSupportActionBar(toolbar);            //toolbar를 actionbar로 설정
         if (getSupportActionBar() != null)      //Actionbar가 있을 경우
