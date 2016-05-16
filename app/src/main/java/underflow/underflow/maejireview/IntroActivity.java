@@ -23,9 +23,8 @@ public class IntroActivity extends AppCompatActivity {
 
     private class splashhandler implements Runnable {
         public void run() {
-            startActivity(new Intent(getApplication(),MainActivity.class));
+            startActivity(new Intent(getApplication(),SignInActivity.class));
             IntroActivity.this.finish();
         }
     }
-
 }

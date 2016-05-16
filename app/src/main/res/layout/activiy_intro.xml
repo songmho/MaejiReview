@@ -4,8 +4,8 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="372dp"
-        android:layout_height="550dp"
+        android:layout_width="224dp"
+        android:layout_height="331dp"
         android:src="@drawable/logo_p"
         android:layout_gravity="center" />
 

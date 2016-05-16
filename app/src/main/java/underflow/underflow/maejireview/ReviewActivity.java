@@ -19,7 +19,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ReviewActivity extends AppCompatActivity implements View.OnClickListener {

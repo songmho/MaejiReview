@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {          //MainActivity

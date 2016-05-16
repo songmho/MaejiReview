@@ -1,5 +1,6 @@
 package underflow.underflow.maejireview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -24,10 +25,22 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         Button signin_in=(Button)findViewById(R.id.signin_in);
         signin_in.setOnClickListener(this);
 
+        Button signin_signup=(Button)findViewById(R.id.signin_signup);
+        signin_signup.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(SignInActivity.this, "ㅎㅇ", Toast.LENGTH_SHORT).show();
+        switch (v.getId()){
+            case R.id.signin_in:
+                startActivity(new Intent(getApplication(),MainActivity.class));
+                SignInActivity.this.finish();
+                break;
+            case R.id.signin_signup:
+                startActivity(new Intent(getApplication(),SignUpActivity.class));
+                break;
+
+
+        }
     }
 }
