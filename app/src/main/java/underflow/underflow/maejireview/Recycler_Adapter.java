@@ -2,14 +2,14 @@ package underflow.underflow.maejireview;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -38,6 +38,7 @@ public class Recycler_Adapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final Review_item item = items.get(position);
+        Glide.with(context).load(item.getImage()).into(((Body)holder).image);
         Drawable drawable = context.getResources().getDrawable(item.getImage());
         ((Body) holder).title.setText(item.getTitle());
         ((Body) holder).user.setText(item.getUser());
@@ -62,14 +63,12 @@ public class Recycler_Adapter extends RecyclerView.Adapter {
     }
 
     public class Body extends RecyclerView.ViewHolder {
-        CardView cardView;
         TextView title;
         TextView user;
-        ImageView background;
+        ImageView image;
         public Body(View itemView) {
             super(itemView);
-            background = (ImageView) itemView.findViewById(R.id.background);
-            cardView = (CardView)itemView.findViewById(R.id.card);
+            image = (ImageView) itemView.findViewById(R.id.image);
             title = (TextView)itemView.findViewById(R.id.title);
             user = (TextView)itemView.findViewById(R.id.user);
         }

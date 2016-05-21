@@ -8,17 +8,17 @@ public class Review_item {
     String title;
     String user;
 
-    int getImage(){
+    public int getImage(){
         return this.image;
     }
-    String getTitle(){
+    public String getTitle(){
         return this.title;
     }
-    String getUser(){
+    public String getUser(){
         return this.user;
     }
 
-    Review_item(int image, String title, String user){
+    public Review_item(int image, String title, String user){
         this.image=image;
         this.title=title;
         this.user=user;
