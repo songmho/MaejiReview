@@ -34,7 +34,7 @@ public class Recycler_Adapter extends RecyclerView.Adapter {
         return new Body(v);
     }
 
-    
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final Review_item item = items.get(position);

@@ -1,9 +1,11 @@
 package underflow.underflow.maejireview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +28,31 @@ public class ListActivity extends AppCompatActivity {
 
         List<Review_item> items=new ArrayList<>();
         Review_item[] item=new Review_item[5];
-        item[0]=new Review_item(R.drawable.test,"#1","1");
-        item[1]=new Review_item(R.drawable.test1,"#2","2");
-        item[2]=new Review_item(R.drawable.test2,"#3","3");
-        item[3]=new Review_item(R.drawable.test3,"#4","4");
-        item[4]=new Review_item(R.drawable.test4,"#5","5");
+        Intent intent = getIntent();
+        String category = intent.getStringExtra("category");
 
-        for(int i=0;i<5;i++) items.add(item[i]);
+
+        //image, title, user 순서
+
+        if(category == "rice") {
+            item[0] = new Review_item(R.drawable.test, "rice1", "user1");
+            item[1] = new Review_item(R.drawable.test1, "rice2", "user2");
+            item[2] = new Review_item(R.drawable.test2, "rice3", "user3");
+            item[3] = new Review_item(R.drawable.test3, "rice4", "user4");
+            item[4] = new Review_item(R.drawable.test4, "rice5", "user5");
+            for (int i = 0; i < 5; i++) items.add(item[i]);
+
+        }
+
+        else if(category == "home") {
+            item[0] = new Review_item(R.drawable.test, "home1", "user1");
+            item[1] = new Review_item(R.drawable.test1, "home2", "user2");
+            item[2] = new Review_item(R.drawable.test2, "home3", "user3");
+            item[3] = new Review_item(R.drawable.test3, "home4", "user4");
+            item[4] = new Review_item(R.drawable.test4, "home5", "user5");
+            for (int i = 0; i < 5; i++) items.add(item[i]);
+        }
+        else{}
 
         recyclerView.setAdapter(new Recycler_Adapter(getApplicationContext(), items, R.layout.activity_main));
     }
