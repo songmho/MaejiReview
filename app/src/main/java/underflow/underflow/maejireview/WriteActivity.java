@@ -36,14 +36,14 @@ public class WriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_write);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("리뷰작성");
-
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         viewPager = (ViewPager)findViewById(R.id.viewPager);
         edit_title = (EditText)findViewById(R.id.edit_title);
         edit_content = (EditText)findViewById(R.id.edit_content);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("리뷰작성");
 
         img_arr[0]=R.drawable.test1;
         img_arr[1]=R.drawable.test2;

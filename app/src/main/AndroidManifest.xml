@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity">
+
         </activity>
         <activity android:name=".ReviewActivity">
             <meta-data
@@ -29,6 +30,8 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".SignInActivity">
+        </activity>
+        <activity android:name=".SignUpActivity">
         </activity>
         <activity android:name=".ListActivity">
         </activity>

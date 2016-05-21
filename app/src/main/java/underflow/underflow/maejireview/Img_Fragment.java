@@ -1,6 +1,7 @@
 package underflow.underflow.maejireview;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import butterknife.ButterKnife;
 
@@ -31,8 +34,8 @@ public class Img_Fragment extends Fragment {
         ButterKnife.bind(this,view);
 
         Bundle bundle=getArguments();
-        ImageView img = (ImageView)getActivity().findViewById(R.id.img);
-        img.setImageResource(bundle.getInt("img"));
+        ImageView img = (ImageView)view.findViewById(R.id.img);
+        Glide.with(mContext).load(bundle.getInt("img")).into(img);
 
         return view;
     }
