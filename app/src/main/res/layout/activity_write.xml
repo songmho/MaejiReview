@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_margin="15dp"
+                android:id="@+id/radiogroup"
                 android:weightSum="4">
 
                 <RadioButton
