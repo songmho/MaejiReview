@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(ParseUser.getCurrentUser()==null){
+            startActivity(new Intent(MainActivity.this,IntroActivity.class));
+            finish();
+        }
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);                 //ButterKnife 사용
 
