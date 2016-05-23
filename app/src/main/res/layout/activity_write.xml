@@ -18,9 +18,37 @@
             android:layout_marginBottom="20dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="분류"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="15dp"
+                android:weightSum="4">
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="밥"
+                    android:id="@+id/button_bab"
+                    android:layout_weight="1.8"/>
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="집"
+                    android:id="@+id/button_zip"
+                    android:layout_weight="2"/>
+            </RadioGroup>
+
+            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="제목"/>
+
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/edit_title"
                 android:layout_width="match_parent"
@@ -50,7 +78,8 @@
             <View
             android:layout_width="match_parent"
             android:layout_height="10dp"/>
-    </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
