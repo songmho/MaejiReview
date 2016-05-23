@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
 
             case R.id.about:                    //about 클릭 시
-                Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,AboutActivity.class));
                 drawerlayout.closeDrawer(GravityCompat.START);
                 return true;
         }   //end switch
