@@ -8,6 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,50 +24,55 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-
+    String category;
+    RecyclerView recyclerView;
+    List<Review_item> items=new ArrayList<>();
     @Override
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        Intent intent = getIntent();
+        category = intent.getStringExtra("category");
+
         toolbar = (Toolbar)findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("목록보기");
+        if(category.equals("home"))
+            getSupportActionBar().setTitle(R.string.drawer_home);
+        else
+            getSupportActionBar().setTitle(R.string.drawer_rice);
 
-        RecyclerView recyclerView=(RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView=(RecyclerView) findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<Review_item> items=new ArrayList<>();
-        Review_item[] item=new Review_item[5];
-        Intent intent = getIntent();
-        String category = intent.getStringExtra("category");
 
         //image, title, user 순서
 
-        if(category.equals("rice")) {
-            item[0] = new Review_item(R.drawable.test5, "rice1", "user1");
-            item[1] = new Review_item(R.drawable.test1, "rice2", "user2");
-            item[2] = new Review_item(R.drawable.test2, "rice3", "user3");
-            item[3] = new Review_item(R.drawable.test3, "rice4", "user4");
-            item[4] = new Review_item(R.drawable.test4, "rice5", "user5");
-        }
+        makeList();
 
-        else if(category.equals("home")) {
-            item[0] = new Review_item(R.drawable.test5, "home1", "user1");
-            item[1] = new Review_item(R.drawable.test1, "home2", "user2");
-            item[2] = new Review_item(R.drawable.test2, "home3", "user3");
-            item[3] = new Review_item(R.drawable.test3, "home4", "user4");
-            item[4] = new Review_item(R.drawable.test4, "home5", "user5");
+    }
 
-        }
-        else{}
+    private void makeList() {
 
-        for (int i = 0; i < 5; i++) items.add(item[i]);
-        recyclerView.setAdapter(new Recycler_Adapter(getApplicationContext(), items, R.layout.activity_list));
+        Review_item[] item=new Review_item[5];
+
+        ParseQuery<ParseObject> q = ParseQuery.getQuery("Posting");
+        q.whereContains("category",category);
+        q.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                for(ParseObject o : objects){
+                    Review_item i = new Review_item(R.drawable.test1,o.getString("title"),o.getString("contents"));
+                    items.add(i);
+                }
+                recyclerView.setAdapter(new Recycler_Adapter(getApplicationContext(), items, R.layout.activity_list));
+            }
+        });
+
     }
 
 

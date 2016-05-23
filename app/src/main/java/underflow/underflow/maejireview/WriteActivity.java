@@ -15,6 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import butterknife.ButterKnife;
 
@@ -27,8 +33,12 @@ public class WriteActivity extends AppCompatActivity {
     ViewPager viewPager;
     EditText edit_title;
     EditText edit_content;
+    RadioGroup radiogroup;
+    RadioButton radio_rice, radio_home;
 
     int[] img_arr= new int[5];
+
+    String category;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,16 +50,22 @@ public class WriteActivity extends AppCompatActivity {
         viewPager = (ViewPager)findViewById(R.id.viewPager);
         edit_title = (EditText)findViewById(R.id.edit_title);
         edit_content = (EditText)findViewById(R.id.edit_content);
+        radiogroup = (RadioGroup)findViewById(R.id.radiogroup);
+        radio_home = (RadioButton)findViewById(R.id.radio_home);
+        radio_rice = (RadioButton)findViewById(R.id.radio_rice);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("리뷰작성");
+
 
         img_arr[0]=R.drawable.test1;
         img_arr[1]=R.drawable.test2;
         img_arr[2]=R.drawable.test3;
         img_arr[3]=R.drawable.test4;
         img_arr[4]=R.drawable.test5;
+
+
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +76,22 @@ public class WriteActivity extends AppCompatActivity {
 
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+
+        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radio_rice:
+                        category="rice";
+                        break;
+                    case R.id.radio_home:
+                        category="home";
+                        break;
+                }
+            }
+        });
+
+
     }
 
     @Override
@@ -73,7 +105,13 @@ public class WriteActivity extends AppCompatActivity {
         if(item.getItemId()==R.id.item_completed){
             edit_title.getText().toString();
             edit_content.getText().toString();
-
+            ParseObject o = new ParseObject("Posting");
+            o.put("category",category);
+            o.put("title",edit_title.getText().toString());
+            o.put("contents",edit_content.getText().toString());
+            o.put("posting_user", ParseUser.getCurrentUser());
+            o.saveInBackground();
+            Toast.makeText(WriteActivity.this, "글쓰기 완료되었다!", Toast.LENGTH_SHORT).show();
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -92,15 +130,15 @@ public class WriteActivity extends AppCompatActivity {
 
     void getDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Alert");
-        builder.setMessage("글쓰기를 취소하시겠습니까?");
-        builder.setPositiveButton("네", new DialogInterface.OnClickListener() {
+        builder.setTitle(getString(R.string.alert_head));
+        builder.setMessage(getString(R.string.alert_body));
+        builder.setPositiveButton(getString(R.string.alert_positive), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
-        builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.alert_negative), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

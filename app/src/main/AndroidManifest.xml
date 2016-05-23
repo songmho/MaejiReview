@@ -22,9 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ReviewActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
         </activity>
 
         <activity android:name=".WriteActivity">
