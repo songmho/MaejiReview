@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -16,10 +17,18 @@ import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
 
+    Toolbar toolbar;
+
     @Override
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("목록보기");
 
         RecyclerView recyclerView=(RecyclerView) findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());

@@ -1,12 +1,14 @@
 package underflow.underflow.maejireview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -36,13 +38,27 @@ public class Recycler_Adapter extends RecyclerView.Adapter {
 
 
     @Override
+    //item 생성시 body와 adpapter를 이어줌
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final Review_item item = items.get(position);
         Glide.with(context).load(item.getImage()).into(((Body)holder).image);
         Drawable drawable = context.getResources().getDrawable(item.getImage());
         ((Body) holder).title.setText(item.getTitle());
         ((Body) holder).user.setText(item.getUser());
+        ((Body) holder).review_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ReviewActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("user", item.getUser());
+                intent.putExtra("title", item.getTitle());
+                context.startActivity(intent);
+            }
+        });
     }
+
+
+
 
     @Override
     public int getItemCount() {
@@ -66,11 +82,13 @@ public class Recycler_Adapter extends RecyclerView.Adapter {
         TextView title;
         TextView user;
         ImageView image;
+        LinearLayout review_item;
         public Body(View itemView) {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.image);
             title = (TextView)itemView.findViewById(R.id.title);
             user = (TextView)itemView.findViewById(R.id.user);
+            review_item =(LinearLayout)itemView.findViewById(R.id.review_item);
         }
     }
 }
