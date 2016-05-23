@@ -19,7 +19,7 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_list);
 
         RecyclerView recyclerView=(RecyclerView) findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
@@ -52,7 +52,7 @@ public class ListActivity extends AppCompatActivity {
         else{}
 
         for (int i = 0; i < 5; i++) items.add(item[i]);
-        recyclerView.setAdapter(new Recycler_Adapter(getApplicationContext(), items, R.layout.item_review));
+        recyclerView.setAdapter(new Recycler_Adapter(getApplicationContext(), items, R.layout.activity_list));
     }
 
 
