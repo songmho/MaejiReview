@@ -3,4 +3,6 @@
     <color name="colorPrimary">#FAE08B</color>
     <color name="colorPrimaryDark">#FFE57F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="Listdivider">#E0E0E0</color>
+    <color name="TextColor">#9e9e9e</color>
 </resources>

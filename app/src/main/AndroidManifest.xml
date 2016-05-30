@@ -8,37 +8,75 @@
     <application
         android:name=".MaejiReview"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IntroActivity">
+        
+        <activity android:name=".IntroActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ReviewActivity">
+        <activity android:name=".ReviewActivity"
+            android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".WriteActivity">
+        <activity android:name=".WriteActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".SignInActivity">
+        <activity android:name=".SignInActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name=".SignUpActivity">
+        <activity android:name=".SignUpActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ListActivity">
+        <activity android:name=".ListActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-        <activity android:name=".AboutActivity">
+        <activity android:name=".AboutActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+
+        <activity android:name=".MypageActivity"
+        android:screenOrientation="portrait">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity"/>
+        </activity>
+
+        <activity android:name=".MyPageEditActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MypageActivity"/>
+        </activity>
+
+        <activity android:name=".SignUp_2_Activity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".SetupActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
         </activity>
     </application>
 

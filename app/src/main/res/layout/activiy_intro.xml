@@ -4,9 +4,9 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="224dp"
-        android:layout_height="331dp"
-        android:src="@drawable/logo_p"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/icon"
         android:layout_gravity="center" />
 
 </FrameLayout>

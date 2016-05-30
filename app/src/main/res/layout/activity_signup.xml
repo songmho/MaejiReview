@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-
     <include
         android:id="@+id/toolbar"
         layout="@layout/tool_bar" />

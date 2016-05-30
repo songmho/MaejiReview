@@ -1,61 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/tool_bar" />
-
-    <ImageView
-        android:layout_width="143dp"
-        android:layout_height="212dp"
-        android:src="@drawable/logo_p"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/logo_signin" />
-
-    <EditText
+    android:background="#FFFFFF"
+    android:fitsSystemWindows="true">
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/signin_email"
-        android:layout_gravity="center_horizontal"
-        android:hint="이메일"
-        android:layout_marginBottom="20dp" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/signin_password"
-        android:hint="비밀번호"
-        android:layout_marginBottom="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:focusable="true"
+                    android:id="@+id/splash_logo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/icon"
+                    android:layout_gravity="center" />
 
+                <EditText
+                    android:layout_marginTop="20dp"
+                    android:theme="@style/MyAppCompatEdittext"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="이메일"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/signin_email"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:textSize="15dp"
+                    />
+                <EditText
+                    android:theme="@style/MyAppCompatEdittext"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="비밀번호"
+                    android:id="@+id/signin_password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:textSize="15dp"
+                    />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+                <Button
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:text="로그인"
+                    android:id="@+id/signin_in"
+                    android:layout_marginTop="15dp"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+            </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="로그인"
-            android:id="@+id/signin_in"
-            android:layout_marginRight="50dp"
-            android:layout_marginLeft="70dp"
-            android:layout_weight="0.08" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="bottom">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            android:id="@+id/signin_signup" />
-    </LinearLayout>
-
-
-</LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:background="#FFFFFF"
+                android:id="@+id/signin_signup"
+                android:textColor="@color/TextColor"
+                />
+        </LinearLayout>
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:id="@+id/progressbar"/>
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

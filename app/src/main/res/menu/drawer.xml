@@ -3,21 +3,14 @@
     <group
         android:id="@+id/group_category"
         android:checkableBehavior="single">
-    <item
-            android:id="@+id/category"
-            android:title="@string/drawer_category" >
-        <menu>
-            <item
-                android:id="@+id/category_rice"
-                android:icon="@drawable/ic_restaurant"
-                android:title="@string/drawer_rice" />
-            <item
-                android:id="@+id/category_home"
-                android:icon="@drawable/ic_home"
-                android:title="@string/drawer_home" />
-        </menu>
-
-    </item>
+        <item
+            android:id="@+id/category_rice"
+            android:icon="@drawable/ic_restaurant"
+            android:title="@string/drawer_rice" />
+        <item
+            android:id="@+id/category_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/drawer_home" />
     </group>
 
     <group

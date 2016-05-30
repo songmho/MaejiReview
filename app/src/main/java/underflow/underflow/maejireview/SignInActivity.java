@@ -4,15 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Administrator on 2016-05-16.
@@ -35,8 +39,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         Button signin_in=(Button)findViewById(R.id.signin_in);
         signin_in.setOnClickListener(this);
 
-        Button signin_signup=(Button)findViewById(R.id.signin_signup);
+        TextView signin_signup=(TextView)findViewById(R.id.signin_signup);
+
+        signin_signup.setText(Html.fromHtml("<u>회원가입하기</u>"));
         signin_signup.setOnClickListener(this);
+
     }
 
     @Override

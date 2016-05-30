@@ -15,13 +15,20 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {          //MainActivity
 
@@ -32,17 +39,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DrawerLayout drawerlayout;
     NavigationView navigationView;
     RecyclerView recyclerView;
+    TextView name;
+
+    ParseUser parseUser;
+    String profileUrl = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(ParseUser.getCurrentUser()==null){
-            startActivity(new Intent(MainActivity.this,IntroActivity.class));
+        if(ParseUser.getCurrentUser()==null){                       //로그인이 되어있지 않을 경우
+            startActivity(new Intent(MainActivity.this,IntroActivity.class));       //Intro Activity로 이동
             finish();
         }
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);                 //ButterKnife 사용
 
+        parseUser =ParseUser.getCurrentUser();
         fab = (FloatingActionButton)findViewById(R.id.fab);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         drawerlayout = (DrawerLayout)findViewById(R.id.drawerLayout);
@@ -81,8 +93,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        makeHeader();       //heaer 생성
+
         fab.setOnClickListener(this);        //fab clickListener
     }       //end Oncreate
+
+    private void makeHeader() {
+        View headerView = navigationView.getHeaderView(0);
+        ImageView profile = (ImageView)headerView.findViewById(R.id.profile);
+        name = (TextView)headerView.findViewById(R.id.text_username);
+
+        if (parseUser != null) {
+            name.setText(ParseUser.getCurrentUser().getString("name"));
+            ParseFile parseFile = parseUser.getParseFile("profile");
+            if (parseFile != null) {
+                profileUrl = parseFile.getUrl();
+                Log.e("dfdfdf", "parse file url : " + profileUrl);
+                if (!isFinishing())
+                    Glide.with(getApplicationContext()).load(profileUrl).diskCacheStrategy(DiskCacheStrategy.ALL).bitmapTransform(new CropCircleTransformation(getApplicationContext())).placeholder(R.drawable.profile).into(profile);
+                else
+                    Glide.with(getApplicationContext()).load(profileUrl).diskCacheStrategy(DiskCacheStrategy.ALL).bitmapTransform(new CropCircleTransformation(getApplicationContext())).placeholder(R.drawable.profile).into(profile);
+            }
+        }
+
+        else {
+            name.setText("로그인을 해주세요.");
+            Glide.with(getApplicationContext()).load(R.drawable.profile).diskCacheStrategy(DiskCacheStrategy.ALL).bitmapTransform(new CropCircleTransformation(getApplicationContext())).into(profile);
+        }
+
+
+        headerView.findViewById(R.id.header).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MypageActivity.class));
+                drawerlayout.closeDrawer(GravityCompat.START);
+            }
+        });
+    }
 
     private boolean changeDrawerMenu(MenuItem item) {       //drawer의 항목을 눌렀을 경우
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -104,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
 
             case R.id.setup:                    //설정 클릭 시
-                Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, SetupActivity.class));
                 drawerlayout.closeDrawer(GravityCompat.START);
                 return true;
 
@@ -121,7 +168,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.fab:      //Floating Action Button을 눌렀을 경우
-                //Toast.makeText(MainActivity.this, "준비중!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this, WriteActivity.class));
                 break;
         }   //end switch
@@ -142,4 +188,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }       //end onKeyDown method
 
+
+    private void loadProfile(ImageView profile) {
+        if (parseUser != null) {
+            ParseFile parseFile = parseUser.getParseFile("profile");
+            if (parseFile != null) {
+                profileUrl = parseFile.getUrl();
+                Log.e("dfdfdf", "parse file url : " + profileUrl);
+                if (!isFinishing()) {
+                    Glide.with(getApplicationContext()).load(profileUrl).diskCacheStrategy(DiskCacheStrategy.ALL).bitmapTransform(new CropCircleTransformation(getApplicationContext())).placeholder(R.drawable.profile).into(profile);
+                }else{
+                    Glide.with(getApplicationContext()).load(profileUrl).diskCacheStrategy(DiskCacheStrategy.ALL).bitmapTransform(new CropCircleTransformation(getApplicationContext())).placeholder(R.drawable.profile).into(profile);
+                }
+            }
+        }
+    }
 }   //end class
