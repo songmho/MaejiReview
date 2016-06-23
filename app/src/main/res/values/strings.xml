@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">MaejiReview</string>
     <string name="string_recommend">추천했음!</string>
+    <string name="string_recommend_undo">추천취소했음!</string>
     <string name="string_undo">취소</string>
     <string name="string_unrecommend">비추했음!</string>
+    <string name="string_unrecommend_undo">비추취소했음!</string>
     <string name="drawer_home">집구할 때!</string>
     <string name="drawer_rice">밥먹을 때!</string>
     <string name="drawer_setup">설정</string>

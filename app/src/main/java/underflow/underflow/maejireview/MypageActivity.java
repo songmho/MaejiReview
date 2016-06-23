@@ -93,7 +93,6 @@ public class MypageActivity extends AppCompatActivity {
         q1.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
-                Toast.makeText(MypageActivity.this, ""+objects.size(), Toast.LENGTH_SHORT).show();
                 write.setText(String.valueOf(objects.size()));
             }
         });
