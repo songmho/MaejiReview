@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -188,6 +189,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }       //end onKeyDown method
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);       //Toolbar에 메뉴 추가
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.action_search){               //search버튼 클릭 시
+            startActivity(new Intent(MainActivity.this,SearchActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void loadProfile(ImageView profile) {
         if (parseUser != null) {
