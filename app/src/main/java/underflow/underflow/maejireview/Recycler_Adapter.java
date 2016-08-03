@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
 /**
  * Created by 수진 on 2016-05-16.
  */
@@ -41,7 +43,9 @@ public class Recycler_Adapter extends RecyclerView.Adapter {
     //item 생성시 body와 adpapter를 이어줌
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final Review_item item = items.get(position);
-        Glide.with(context).load(item.getImage()).into(((Body)holder).image);
+        Glide.with(context).load(item.getImage())
+                .bitmapTransform(new CropCircleTransformation(context))
+                .into(((Body) holder).image);
         Drawable drawable = context.getResources().getDrawable(item.getImage());
         ((Body) holder).title.setText(item.getTitle());
         ((Body) holder).user.setText(item.getUser());

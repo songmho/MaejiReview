@@ -65,6 +65,7 @@ public class ListActivity extends AppCompatActivity {
         q.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
+                if(objects != null)
                 for(ParseObject o : objects){
                     Review_item i = new Review_item(R.drawable.test1,o.getString("title"),o.getString("contents"));
                     items.add(i);
